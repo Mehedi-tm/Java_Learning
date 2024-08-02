@@ -1,0 +1,31 @@
+import java.util.Scanner;
+import java.text.*;
+public class Main {
+    /*
+      1.Enter the buying price per share
+      2.enter the closing price on subsequent days
+      3.calculate aggregate earnings/losses after each day
+      4.leave program when closing price is negative
+     */
+    public static void main(String[] args) {
+        Scanner scan=new Scanner(System.in);
+        System.out.println("Enter your buying price per share: ");
+        double buyingPrice=scan.nextDouble();
+        int day=1;
+        double closingPrice;
+        DecimalFormat df=new DecimalFormat("0.00");
+        while(true) {
+            System.out.println("Enter the closing price for day " +day);
+            closingPrice=scan.nextDouble();
+            if(closingPrice<0.0) break;
+            double earnings=closingPrice - buyingPrice;
+            if(earnings>0) {
+                System.out.println("You have earned $"+df.format(earnings) +"this day"+day);
+            }
+            else {
+                System.out.println("No Profit");
+            }
+            day++;
+        }
+    }
+}
